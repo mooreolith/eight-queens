@@ -37,7 +37,7 @@ self.addEventListener('fetch', event => {
     if(cachedResponse !== undefined){
       return cachedResponse;
     }else{
-      return fetch(event.request);
+      return await fetch(event.request);
     }
   })
 })
