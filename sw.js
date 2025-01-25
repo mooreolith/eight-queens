@@ -1,43 +1,62 @@
 const CACHE_NAME = "eight-queens";
-const site = `https://mooreolith.github.io/eight-queens`;
-
 const PRECACHE_ASSETS = [
-  `${site}/`,
-  `${site}/favicon.ico`,
-  `${site}/index.html`,
-  `${site}/styles.css`,
-  `${site}/Board.png`,
-  `${site}/Crown8.png`,
-  `${site}/manifest.json`,
-  `${site}/script.mjs`,
-  `${site}/android-chrome-192x192.png`,
-  `${site}/android-chrome-512x512.png`,
-  `${site}/apple-touch-icon.png`,
-  `${site}/favicon-16x16.png`,
-  `${site}/favicon-32x32.png`,
-  `${site}/sw.js`
-]
+  `./`,
+  `favicon.ico`,
+  `index.html`,
+  `styles.css`,
+  `Board.png`,
+  `Crown8.png`,
+  `manifest.json`,
+  `script.mjs`,
+  `android-chrome-192x192.png`,
+  `android-chrome-512x512.png`,
+  `apple-touch-icon.png`,
+  `favicon-16x16.png`,
+  `favicon-32x32.png`,
+  // `sw.js`
+];
 
 self.addEventListener('install', event => {
-  event.waitUntil((async () => {
-    const cache = await caches.open(CACHE_NAME);
-    cache.addAll(PRECACHE_ASSETS);
-  }))
+  event.waitUntil(
+    caches.open(PRECACHE_ASSETS)
+      .then(cache => cache.addAll(PRECACHE_ASSETS))
+      .then(self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim());
+  const currentCaches = [PRECACHE_ASSETS, CACHE_NAME];
+  event.waitUntil(
+    caches.keys()
+      .then(cacheNames => {
+        return cacheNames.filter(cacheName => !currentCaches.includes(cacheName));
+      })
+      .then(cachesToDelete => {
+        return Promise.all(cachesToDelete.map(cacheToDelete => {
+          return caches.delete(cacheToDelete);
+        }));
+      })
+      .then(() => self.clients.claim())
+  );
 });
 
+// Thanks: https://googlechrome.github.io/samples/service-worker/basic/
 self.addEventListener('fetch', event => {
-  event.respondWith(async () => {
-    const cache = await caches.open(CACHE_NAME);
-    const cachedResponse = await cache.match(event.request);
+  if(event.request.url.startsWith(self.location.origin)){
+    event.respondWith(
+      caches.match(event.request).then(cachedResponse => {
+        if(cachedResponse){
+          return cachedResponse;
+        }
 
-    if(cachedResponse !== undefined){
-      return cachedResponse;
-    }else{
-      return await fetch(event.request);
-    }
-  })
+        return caches.open(CACHE_NAME).then(cache => {
+          return fetch(event.request).then(response => {
+            return cache.put(event.request, response.clone()).then(() => {
+              return response;
+            })
+          })
+        })
+      })
+    );
+  }
 })
