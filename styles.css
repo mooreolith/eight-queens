@@ -9,7 +9,6 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
-  justify-content: top;
   align-items: center;
 }
 
