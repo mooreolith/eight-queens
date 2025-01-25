@@ -50,6 +50,11 @@
       </tr>
     </template>
 
-    <script type="module" src="./index.mjs"></script>
+    <script type="module" src="./script.mjs"></script>
+    <script>
+      if(typeof navigator.serviceWorker !== undefined){
+        navigator.serviceWorker.register('./sw.js');
+      }
+    </script>
   </body>
 </html>
