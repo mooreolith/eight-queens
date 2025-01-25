@@ -1,11 +1,12 @@
 const CACHE_NAME = "eight-queens";
+const site = `https://mooreolith.github.io/eight-queens`;
 
 const PRECACHE_ASSETS = [
-  '/favicon.ico',
-  '/index.html',
-  '/styles.css',
-  '/manifest.json',
-  '/script.mjs',
+  `${site}/favicon.ico`,
+  `${site}/index.html`,
+  `${site}/styles.css`,
+  `${site}/manifest.json`,
+  `${site}/script.mjs`,
 ]
 
 self.addEventListener('install', event => {
