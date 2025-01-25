@@ -5,6 +5,7 @@ const table = qs('table');
 const output = qs('output');
 const colIds = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']; // left-right
 const rowIds = ['8', '7', '6', '5', '4', '3', '2', '1']; // up-down
+let highscore = [];
 //#endregion
 
 //#region main
@@ -18,6 +19,8 @@ setup(table)
 function setup(table){
   setupRows(table);
   setupCells(table);
+  loadHighscore();
+  displayHighscore();
 }
 
 /*
@@ -45,10 +48,11 @@ function setupCells(table){
         cell.classList.add('queen');
       }
 
-      output.innerText = [...document.querySelectorAll('.queen')].map(getCoords).join(', ');
+      let solution = [...document.querySelectorAll('.queen')].map(getCoords).join(', ');
 
       if(solved(table)){
-        output.innerText += `  ✓`;
+        output.innerText += `${solution}  ✓`;
+        addHighscore(solution);
       }
     }
   });
@@ -147,6 +151,55 @@ function checkQueen(coords){
   const sel = `tr.r${coords[1]} > td.c${coords[0]}`;
   const td = table.querySelector(sel);
   return td.classList.contains('queen');
+}
+
+//#endregion
+
+//#region highscore
+
+function loadHighscore(){
+  const highscoreText = localStorage.getItem("highscore");
+  if(!highscoreText) return false;
+  highscore = JSON.parse(highscoreText);
+}
+
+function displayHighscore(){
+  const highscoreEl = document.querySelector('#highscore');
+  highscoreEl.innerHTML = '';
+  for(let score of highscore){
+    const entry = document.createElement('li');
+    entry.innerHTML = `${score.solution}: ${score.date} - ${score.initials}`;
+    highscoreEl.appendChild(entry);
+  }
+}
+
+function addHighscore(solution){
+  let date = new Date();
+  date = new Intl.DateTimeFormat('en-US', {
+    year: "numeric", 
+    month: "numeric", 
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit"
+  }).format(date);
+
+  let initials = prompt("Your initials for the highscore:")
+  if(!initials){
+    initials = "???";
+  }
+
+  highscore.unshift({
+    solution,
+    date,
+    initials
+  })
+
+  displayHighscore();
+  writeHighscore();
+}
+
+function writeHighscore(){
+  localStorage.setItem('highscore', JSON.stringify(highscore));
 }
 
 //#endregion

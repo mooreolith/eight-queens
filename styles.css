@@ -28,7 +28,7 @@ main {
 }
 
 output {
-  margin-top: 1.6rem;;
+  margin-top: 2rem;;
   font-size: 1.2rem;
 }
 
@@ -101,3 +101,20 @@ td.queen {
   transform: translateY(25%) scale(75%);
 }
 
+ol#highscore {
+  list-style: none;
+  color: gray;
+  margin-top: 50px;
+}
+
+#highscore li {
+  list-style-position: inherit;
+}
+
+#highscore:not(:empty)::before {
+  content: "high score:";
+  position: relative;
+  left: 40%;
+  top: -10px;
+  transform: translateX(-50%);
+}
