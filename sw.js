@@ -23,9 +23,8 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  event.respondsWith(async () => {
+  event.respondWith(async () => {
     const cache = await caches.opion(CACHE_NAME);
-
     const cachedResponse = await cache.match(event.request);
 
     if(cachedResponse !== undefined){
