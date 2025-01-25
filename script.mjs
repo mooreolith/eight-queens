@@ -168,7 +168,7 @@ function displayHighscore(){
   highscoreEl.innerHTML = '';
   for(let score of highscore){
     const entry = document.createElement('li');
-    entry.innerHTML = `${score.solution}: ${score.date} - ${score.initials}`;
+    entry.innerHTML = `${score.solution} - ${score.date} - ${score.initials}`;
     highscoreEl.appendChild(entry);
   }
 }
