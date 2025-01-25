@@ -5,6 +5,8 @@ const PRECACHE_ASSETS = [
   `${site}/favicon.ico`,
   `${site}/index.html`,
   `${site}/styles.css`,
+  `${site}/Board.png`,
+  `${site}/Crown8.png`,
   `${site}/manifest.json`,
   `${site}/script.mjs`,
 ]
