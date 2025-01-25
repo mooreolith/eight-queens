@@ -9,6 +9,11 @@ const PRECACHE_ASSETS = [
   `${site}/Crown8.png`,
   `${site}/manifest.json`,
   `${site}/script.mjs`,
+  `${site}/android-chrome-192x192.png`,
+  `${site}/android-chrome-512x512.png`,
+  `${site}/apple-touch-icon.png`,
+  `${site}/favicon-16x16.png`,
+  `${site}/favicon-32x32.png`,
 ]
 
 self.addEventListener('install', event => {
