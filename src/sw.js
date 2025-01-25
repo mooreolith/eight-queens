@@ -1,18 +1,18 @@
 const CACHE_NAME = "eight-queens";
 const PRECACHE_ASSETS = [
-  `./`,
-  `favicon.ico`,
-  `index.html`,
-  `styles.css`,
-  `Board.png`,
-  `Crown8.png`,
-  `manifest.json`,
-  `script.mjs`,
-  `android-chrome-192x192.png`,
-  `android-chrome-512x512.png`,
-  `apple-touch-icon.png`,
-  `favicon-16x16.png`,
-  `favicon-32x32.png`,
+  `../`,
+  `../favicon.ico`,
+  `../index.html`,
+  `./styles.css`,
+  `../img/Board.png`,
+  `../img/Crown8.png`,
+  `../manifest.json`,
+  `./script.mjs`,
+  `../icons/android-chrome-192x192.png`,
+  `../icons/android-chrome-512x512.png`,
+  `../icons/apple-touch-icon.png`,
+  `../icons/favicon-16x16.png`,
+  `../icons/favicon-32x32.png`,
   // `sw.js`
 ];
 

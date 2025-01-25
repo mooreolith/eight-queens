@@ -17,7 +17,7 @@ h1 {
 }
 
 main {
-  background-image: url('Board.png');
+  background-image: url('../img/Board.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
@@ -96,7 +96,7 @@ td {
 }
 
 td.queen {
-  background-image: url('./Crown8.png');
+  background-image: url('../img/Crown8.png');
   background-repeat: no-repeat;
   background-size: contain;
   transform: translateY(25%) scale(75%);
