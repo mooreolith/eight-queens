@@ -2,6 +2,7 @@ const CACHE_NAME = "eight-queens";
 const site = `https://mooreolith.github.io/eight-queens`;
 
 const PRECACHE_ASSETS = [
+  `${site}/`,
   `${site}/favicon.ico`,
   `${site}/index.html`,
   `${site}/styles.css`,
@@ -29,7 +30,7 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   event.respondWith(async () => {
-    const cache = await caches.opion(CACHE_NAME);
+    const cache = await caches.open(CACHE_NAME);
     const cachedResponse = await cache.match(event.request);
 
     if(cachedResponse !== undefined){
