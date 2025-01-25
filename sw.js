@@ -15,6 +15,7 @@ const PRECACHE_ASSETS = [
   `${site}/apple-touch-icon.png`,
   `${site}/favicon-16x16.png`,
   `${site}/favicon-32x32.png`,
+  `${site}/sw.js`
 ]
 
 self.addEventListener('install', event => {
