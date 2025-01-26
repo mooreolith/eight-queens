@@ -40,11 +40,12 @@ output {
   left: -22px;
   display: flex;
   flex-direction: column;
+  align-items: start;;
   width: calc(min(70vh, 70vh) / 8);
   height: 100%;
 
   color: lightslategray;
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 .row-labels > div {
@@ -81,7 +82,7 @@ table {
 
 .col-labels > div {
   width: calc(min(70vh, 70vw) / 8);
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 td {

@@ -51,8 +51,10 @@ function setupCells(table){
       let solution = [...document.querySelectorAll('.queen')].map(getCoords).join(', ');
 
       if(solved(table)){
-        output.innerText += `${solution}  ✓`;
+        output.innerText = `${solution}  ✓`;
         addHighscore(solution);
+      }else{
+        output.innerText = solution;
       }
     }
   });
