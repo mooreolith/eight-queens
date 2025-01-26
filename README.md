@@ -1,6 +1,11 @@
 # Eight Queens
-by Joshua Moore, January 19th, 2025
 
-[This](https://mooreolith.github.io/eight-queens) eight queens riddle challenges you to place eight queens on a chess board so that they cannot threaten each other vertically, horizontally, or diagonally. A band of text at the bottom records what you've clicked in chess notation, if you complete the riddle, you get a checkmark. That's it.
+## Rules
+To solve the [eight queens puzzle](https://mooreolith.github.io/eight-queens), place 8 queens on a chess board so that they do not threaten each other vertically, horizontally, or diagonally. Can you place all 8 pieces on the board?
 
-This is a rewrite of [eight-queens-old](https://github.com/mooreolith/eight-queens-old).
+## How to:
+Visit the link above, and optionally install the page as an app. This step is completely optional, but it does make it available online (works in Chrome and Android).
+
+## Credits
+page: Joshua Moore
+artwork: Jordan Kump, Zounds Designs
